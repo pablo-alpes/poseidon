@@ -6,11 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.*;
-import java.sql.Timestamp;
 import java.time.Instant;
 
 
@@ -26,6 +23,9 @@ public class CurvePoint {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @Column(name = "CURVEID", columnDefinition = "TINYINT(0, 0)")
+    private int curveId;
+
     @Column(name = "ASOFDATE")
     private Instant asofdate;
 
@@ -33,17 +33,15 @@ public class CurvePoint {
     private Double term;
 
     @Column(name = "VALUENUMBER")
-    private Double valuenumber;
+    private Double valueNumber;
 
     @Column(name = "CREATIONDATE")
     private Instant creationdate;
 
-    @Column(name = "CURVEID", columnDefinition = "TINYINT(0, 0)")
-    private int curveId;
 
-    public CurvePoint(int curveId, Double term, Double valuenumber) {
+    public CurvePoint(int curveId, Double term, Double valueNumber) {
         this.term = term;
-        this.valuenumber = valuenumber;
+        this.valueNumber = valueNumber;
         this.curveId = curveId;
     }
 }
