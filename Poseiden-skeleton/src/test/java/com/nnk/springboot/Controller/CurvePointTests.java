@@ -76,7 +76,6 @@ public class CurvePointTests {
 				.perform(get(url)
 						.param("id", String.valueOf(id)))
 				.andExpect(status().is3xxRedirection());
-				.andExpect(status().is3xxRedirection());
 	}
 
 	//	@WithMockUser(username = "user", roles = {"ADMIN"})

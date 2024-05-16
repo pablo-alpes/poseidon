@@ -13,11 +13,13 @@ import java.time.Instant;
 @Table(name = "BIDLIST")
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class BidList {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private int bidListId;
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
     @Column
     private String account;
@@ -96,7 +98,7 @@ public class BidList {
     @Column(name = "SIDE", length = 125)
     private String side;
 
-    public BidList(String account, String type, double bidQuantity) {
+    public BidList(String account, String type, double bidQuantity) {;
         this.account = account;
         this.type = type;
         this.bidQuantity = bidQuantity;
