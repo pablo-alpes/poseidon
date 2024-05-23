@@ -39,18 +39,18 @@ public class RuleName {
 
     @Size(max = 125)
     @Column(name = "SQLSTR", length = 125)
-    private String sqlstr;
+    private String sql;
 
     @Size(max = 125)
     @Column(name = "SQLPART", length = 125)
-    private String sqlpart;
+    private String sqlPart;
 
-    public RuleName(String name, String description, String json, String template, String sqlstr, String sqlpart) {
+    public RuleName(String name, String description, String json, String template, String sql, String sqlPart) {
         this.name = name;
         this.description = description;
         this.json = json;
         this.template = template;
-        this.sqlstr = sqlstr;
-        this.sqlpart = sqlpart;
+        this.sql = sql;
+        this.sqlPart = sqlPart;
     }
 }

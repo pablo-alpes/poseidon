@@ -15,14 +15,15 @@ import jakarta.validation.Valid;
 
 @Controller
 public class RuleNameController {
-    // TODO: Inject RuleName service
+    //Injects RuleName service
     @Autowired
     RuleNameRepository ruleNameRepository;
 
     @RequestMapping("/ruleName/list")
     public String home(Model model)
     {
-        // TODO: find all RuleName, add to model
+        // find all RuleName, add to model
+        model.addAttribute("ruleNames", ruleNameRepository.findAll());
         return "ruleName/list";
     }
 
@@ -33,26 +34,48 @@ public class RuleNameController {
 
     @PostMapping("/ruleName/validate")
     public String validate(@Valid RuleName ruleName, BindingResult result, Model model) {
-        // TODO: check data valid and save to db, after saving return RuleName list
-        return "ruleName/add";
+        // Checks data valid and save to db, after saving return RuleName list
+        if (!result.hasErrors()) {
+            ruleNameRepository.save(ruleName);
+            model.addAttribute("ruleName", ruleName);
+            return "redirect:/ruleName/list";
+        }
+            else{
+                return "ruleName/add";
+        }
     }
 
     @GetMapping("/ruleName/update/{id}")
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        // TODO: get RuleName by Id and to model then show to the form
+        // Get RuleName by Id and to model then show to the form
+        RuleName ruleName = ruleNameRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+        ruleName.setId(id);
+        model.addAttribute("ruleName", ruleName);
         return "ruleName/update";
     }
 
     @PostMapping("/ruleName/update/{id}")
     public String updateRuleName(@PathVariable("id") Integer id, @Valid RuleName ruleName,
                              BindingResult result, Model model) {
-        // TODO: check required fields, if valid call service to update RuleName and return RuleName list
-        return "redirect:/ruleName/list";
+        // check required fields, if valid call service to update RuleName and return RuleName list
+        if (!result.hasErrors()) {
+            ruleNameRepository.save(ruleName);
+            ruleName.setId(id);
+            model.addAttribute("ruleNames", ruleNameRepository.findAll()); //gets all the records
+            return "redirect:/ruleName/list";
+        }
+            else{
+                return "ruleName/update";
+        }
+
     }
 
     @GetMapping("/ruleName/delete/{id}")
     public String deleteRuleName(@PathVariable("id") Integer id, Model model) {
-        // TODO: Find RuleName by Id and delete the RuleName, return to Rule list
+        // Find RuleName by Id and delete the RuleName, return to Rule list
+        RuleName ruleName = ruleNameRepository.findById(id).orElseThrow(() -> new IllegalArgumentException());
+        ruleNameRepository.deleteById(id);
+        model.addAttribute("ruleName", ruleName);
         return "redirect:/ruleName/list";
     }
 }

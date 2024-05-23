@@ -60,7 +60,7 @@ public class BidListController {
         if (!result.hasErrors()) {
             bidListRepository.save(bidList);
             bidList.setId(id);
-            model.addAttribute("bidList", bidListRepository.findAll()); //gets all the values with the latest add
+            model.addAttribute("bidLists", bidListRepository.findAll()); //gets all the values with the latest add
             return "redirect:/bidList/list";
         }
         return "bidList/update";

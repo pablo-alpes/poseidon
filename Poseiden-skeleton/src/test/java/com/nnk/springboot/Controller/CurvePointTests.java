@@ -98,7 +98,7 @@ public class CurvePointTests {
 		MvcResult mvcResult = this.mockMvc
 				.perform(post(url)
 						.param("term", "1.0d")
-						.param("valuenumber", "2.0d")
+						.param("valueNumber", "2.0d")
 						.param("id", "1")
 				)
 				.andExpect(status().is3xxRedirection())
@@ -129,7 +129,7 @@ public class CurvePointTests {
 		MvcResult mvcResult = this.mockMvc
 				.perform(post(url)
 						.param("term", "1.0d")
-						.param("valuenumber", "2.0d")
+						.param("valueNumber", "2.0d")
 						.param("id", "1")
 				)
 				.andExpect(status().is3xxRedirection())

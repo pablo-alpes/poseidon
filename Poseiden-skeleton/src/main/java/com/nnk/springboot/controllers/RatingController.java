@@ -34,7 +34,7 @@ public class RatingController {
         // Check data is valid and saves record to db, then returns Rating list
         if (!result.hasErrors()) {
             ratingRepository.save(rating);
-            model.addAttribute(rating);
+            model.addAttribute("rating", rating);
             return "redirect:/rating/list";
         }
         return "rating/add";
@@ -56,7 +56,7 @@ public class RatingController {
         if (!result.hasErrors()) {
             rating.setId(id);
             ratingRepository.save(rating);
-            model.addAttribute("rating", ratingRepository.findAll()); //gets the latest list with the new rating
+            model.addAttribute("ratings", ratingRepository.findAll()); //gets the latest list with the new rating
             return "redirect:/rating/list";
         }
         else {
@@ -68,7 +68,7 @@ public class RatingController {
     public String deleteRating(@PathVariable("id") Integer id, Model model) {
         // Finds Rating by Id and delete it, then returns update rating list
         ratingRepository.deleteById(id);
-        model.addAttribute("ratings", ratingRepository.findAll());
+        model.addAttribute("rating", ratingRepository.findAll());
         return "redirect:/rating/list";
     }
 }

@@ -93,7 +93,11 @@ CREATE TABLE IF NOT EXISTS Users (
 insert into Users(fullname, username, password, role) values('Administrator', 'admin', '$2a$10$pBV8ILO/s/nao4wVnGLrh.sa/rnr5pDpbeC4E.KNzQWoy8obFZdaa', 'ADMIN');
 insert into Users(fullname, username, password, role) values('User', 'user', '$2a$12$GMfjcJHr85d37Jzl0rMOXe1Us7PuJEWb.Kf3dBZQ7v0Taxr5KwHbS', 'USER');
 insert into Users(fullname, username, password, role) values('User', 'test', '$2a$12$GMfjcJHr85d37Jzl0rMOXe1Us7PuJEWb.Kf3dBZQ7v0Taxr5KwHbS', 'USER');
--- test test
-
-
+-- record 203 for testing
+insert into bidlist(id, account,type, bidQuantity, askQuantity, bid, ask,
+                    benchmark, bidListDate, commentary, security, status, trader, book,
+                    creationName, creationDate, revisionName, revisionDate, dealName,
+                    dealType, sourceListId, side)
+    values(203,'testAcc','typeAcc','300','300','300','300',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+        
 COMMIT;

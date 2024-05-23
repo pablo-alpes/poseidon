@@ -61,7 +61,7 @@ public class CurveController {
         if (!result.hasErrors()) {
             curvePointRepository.save(curvePoint);
             curvePoint.setId(id);
-            model.addAttribute("curvePoint", curvePointRepository.findAll()); //gets all the values with the latest add
+            model.addAttribute("curvePoints", curvePointRepository.findAll()); //gets all the values with the latest add
             return "redirect:/curvePoint/list";
         }
         return "curvePoint/update";

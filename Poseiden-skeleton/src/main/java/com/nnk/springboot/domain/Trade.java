@@ -34,19 +34,19 @@ public class Trade {
     private String type;
 
     @Column(name = "BUYQUANTITY")
-    private Double buyquantity;
+    private Double buyQuantity;
 
     @Column(name = "SELLQUANTITY")
-    private Double sellquantity;
+    private Double sellQuantity;
 
     @Column(name = "BUYPRICE")
-    private Double buyprice;
+    private Double buyPrice;
 
     @Column(name = "SELLPRICE")
-    private Double sellprice;
+    private Double sellPrice;
 
     @Column(name = "TRADEDATE")
-    private Instant tradedate;
+    private Instant tradeDate;
 
     @Size(max = 125)
     @Column(name = "SECURITY", length = 125)
@@ -70,29 +70,29 @@ public class Trade {
 
     @Size(max = 125)
     @Column(name = "CREATIONNAME", length = 125)
-    private String creationname;
+    private String creatioName;
 
     @Column(name = "CREATIONDATE")
-    private Instant creationdate;
+    private Instant creationDate;
 
     @Size(max = 125)
     @Column(name = "REVISIONNAME", length = 125)
-    private String revisionname;
+    private String revisionName;
 
     @Column(name = "REVISIONDATE")
-    private Instant revisiondate;
+    private Instant revisionDate;
 
     @Size(max = 125)
     @Column(name = "DEALNAME", length = 125)
-    private String dealname;
+    private String dealName;
 
     @Size(max = 125)
     @Column(name = "DEALTYPE", length = 125)
-    private String dealtype;
+    private String dealType;
 
     @Size(max = 125)
     @Column(name = "SOURCELISTID", length = 125)
-    private String sourcelistid;
+    private String sourceListId;
 
     @Size(max = 125)
     @Column(name = "SIDE", length = 125)
