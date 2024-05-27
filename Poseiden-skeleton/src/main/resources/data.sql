@@ -98,6 +98,46 @@ insert into bidlist(id, account,type, bidQuantity, askQuantity, bid, ask,
                     benchmark, bidListDate, commentary, security, status, trader, book,
                     creationName, creationDate, revisionName, revisionDate, dealName,
                     dealType, sourceListId, side)
-    values(203,'testAcc','typeAcc','300','300','300','300',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
-        
+    values(203,'testAcc','typeAcc','300','300','300','300',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+insert into bidlist(id, account,type, bidQuantity, askQuantity, bid, ask,
+                    benchmark, bidListDate, commentary, security, status, trader, book,
+                    creationName, creationDate, revisionName, revisionDate, dealName,
+                    dealType, sourceListId, side)
+values(204,'testAcc','typeAcc','300','300','300','300',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+
+insert into curvepoint(                            Id,
+                                                   curveid,
+                                                   asofdate,
+                                                   term,
+                                                   valuenumber,
+                                                   creationdate)
+    values(203,1,NULL,NULL,NULL,NULL);
+
+insert into curvepoint(                            Id,
+                                                   curveid,
+                                                   asofdate,
+                                                   term,
+                                                   valuenumber,
+                                                   creationdate)
+values(204,2,NULL,NULL,NULL,NULL);
+
+INSERT INTO Trade (TradeId, account, type, buyQuantity, sellQuantity, buyPrice, sellPrice, tradeDate, security, status, trader, benchmark, book, creationName, creationDate, revisionName, revisionDate, dealName, dealType, sourceListId, side)
+VALUES (203, 'ACCT001', 'BUY', 100.00, 0.00, 10.00, 0.00, '2022-01-01 12:00:00', 'XYZ', 'OPEN', 'John Doe', 'BENCHMARK1', 'BOOK1', 'Jane Smith', '2022-01-01 12:00:00', 'Jane Smith', '2022-01-01 12:00:00', 'DEAL1', 'TYPE1', 'SOURCE1', 'SELL');
+
+INSERT INTO Trade (TradeId, account, type, buyQuantity, sellQuantity, buyPrice, sellPrice, tradeDate, security, status, trader, benchmark, book, creationName, creationDate, revisionName, revisionDate, dealName, dealType, sourceListId, side)
+VALUES (204, 'ACCT001', 'BUY', 100.00, 0.00, 10.00, 0.00, '2022-01-01 12:00:00', 'XYZ', 'OPEN', 'John Doe', 'BENCHMARK1', 'BOOK1', 'Jane Smith', '2022-01-01 12:00:00', 'Jane Smith', '2022-01-01 12:00:00', 'DEAL1', 'TYPE1', 'SOURCE1', 'SELL');
+
+INSERT INTO Rating (id, moodysrating, sandprating, fitchrating, ordernumber)
+VALUES (203, 'A1', 'AA', 'BBB', 1);
+
+INSERT INTO Rating (id, moodysrating, sandprating, fitchrating, ordernumber)
+VALUES (204, 'A1', 'AA', 'BBB', 1);
+
+INSERT INTO RuleName (Id, name, description, json, template, sqlStr, sqlPart)
+VALUES (203, 'Rule1', 'Description of Rule1', '{"key": "value"}', 'SELECT * FROM table WHERE condition', 'SELECT column FROM table', 'WHERE condition');
+
+INSERT INTO RuleName (Id, name, description, json, template, sqlStr, sqlPart)
+VALUES (204, 'Rule1', 'Description of Rule1', '{"key": "value"}', 'SELECT * FROM table WHERE condition', 'SELECT column FROM table', 'WHERE condition');
+
 COMMIT;

@@ -79,7 +79,13 @@
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring6</artifactId>
 		</dependency>
-    </dependencies>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<version>6.2.4</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>

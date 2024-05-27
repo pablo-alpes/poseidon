@@ -31,22 +31,21 @@ public class SecurityConfiguration {
         //https://www.baeldung.com/spring-security-login
 
         return http
+                .csrf().disable()
                 .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers("/admin**","/user/**", "/app/**").hasRole("ADMIN");
+                    auth.requestMatchers("/**").hasRole("ADMIN");
                 })
-                .authorizeHttpRequests(auth -> {
-                    auth.requestMatchers(
-                            "/css/**", //needs to be included, otherwise the site won't render the bootstrap style
-                            "/",
-                            "/login/**",
-                            "/bidList/**",
-                            "/rating/**",
-                            "/curvePoint/**",
-                            "/ruleName/**",
-                            "/trade/**",
-                            "/app/error",
-                            "/app-logout").hasRole("USER");
-                })
+                .authorizeHttpRequests(auth -> auth.requestMatchers(
+                        "/css/**", //needs to be included, otherwise the site won't render the bootstrap style
+                        "/",
+                        "/login/**",
+                        "/bidList/**",
+                        "/rating/**",
+                        "/curvePoint/**",
+                        "/ruleName/**",
+                        "/trade/**",
+                        "/app/error",
+                        "/app-logout").hasRole("USER"))
                 .formLogin(
                         form -> form   //reading login : https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/form.html
                                 //.formlogin is excluded to use the one by default : https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/form.html#servlet-authentication-form-custom

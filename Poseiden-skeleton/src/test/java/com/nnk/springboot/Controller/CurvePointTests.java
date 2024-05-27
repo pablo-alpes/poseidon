@@ -7,6 +7,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -22,6 +23,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc // https://stackoverflow.com/questions/73511395/intellij-could-not-autowire-no-beans-of-mockmvc-type-found-but-test-is-ok
+@WithMockUser(username = "test")
 public class CurvePointTests {
 
 	@Autowired
@@ -43,7 +45,6 @@ public class CurvePointTests {
 	@Test
 	@DisplayName("GET - UPDATE - by Id")
 	public void GivenId_WhenGETUpdatebyId_ReplyOKAndReturnsExpectedURL() throws Exception {
-		//TODO -- Add a case with id in the SQL Records
 		//ARRANGE
 		String url = "/curvePoint/update/203"; // "id = NN"
 		//ACT
@@ -67,10 +68,9 @@ public class CurvePointTests {
 	@Test
 	@DisplayName("DELETE - Delete user by Id")
 	public void GivenId_WhenDELETEbyId_ReplyOKAndReturnsExpectedURL() throws Exception {
-		//TODO-Add the record to be added & eliminated
 		//ARRANGE
-		String url = "/curvePoint/delete/203";
-		int id = 203;
+		String url = "/curvePoint/delete/204";
+		int id = 204;
 		//ACT
 		this.mockMvc
 				.perform(get(url)

@@ -35,7 +35,6 @@ public class UserController {
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
         if (!result.hasErrors()) {
-            //todo -- BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(user.getPassword()));
             userRepository.save(user);
@@ -60,8 +59,10 @@ public class UserController {
             return "user/update";
         }
 
-        //todo -- BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        //todo -- user.setPassword(encoder.encode(user.getPassword()));
+        //on stocke le mot de passe comme bcrypt
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(user.getPassword()));
+
         user.setId(id);
         userRepository.save(user);
         model.addAttribute("users", userRepository.findAll());
