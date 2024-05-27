@@ -30,8 +30,7 @@ public class SecurityConfiguration {
     protected SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         //https://www.baeldung.com/spring-security-login
 
-        return http.csrf()
-                .disable()
+        return http
                 .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/admin**","/user/**", "/app/**").hasRole("ADMIN");
                 })
@@ -45,7 +44,8 @@ public class SecurityConfiguration {
                             "/curvePoint/**",
                             "/ruleName/**",
                             "/trade/**",
-                            "/app/error", "app-logout").hasRole("USER");
+                            "/app/error",
+                            "/app-logout").hasRole("USER");
                 })
                 .formLogin(
                         form -> form   //reading login : https://docs.spring.io/spring-security/reference/servlet/authentication/passwords/form.html
