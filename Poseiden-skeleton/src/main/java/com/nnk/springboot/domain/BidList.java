@@ -10,7 +10,7 @@ import lombok.Setter;
 import java.time.Instant;
 
 @Entity
-@Table(name = "BIDLIST")
+@Table(name = "bidlist")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,81 +21,47 @@ public class BidList {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column
     private String account;
 
-    @Size(max = 30)
     @NotNull
-    @Column(name = "TYPE", nullable = false, length = 30)
     private String type;
 
-    @Column(name = "BIDQUANTITY")
     private Double bidQuantity;
 
-    @Column(name = "ASKQUANTITY")
     private Double askQuantity;
 
-    @Column(name = "BID")
     private Double bid;
 
-    @Column(name = "ASK")
     private Double ask;
 
-    @Size(max = 125)
-    @Column(name = "BENCHMARK", length = 125)
     private String benchmark;
 
-    @Column(name = "BIDLISTDATE")
-    private Instant bidlistdate;
+    private Instant bidListDate;
 
-    @Size(max = 125)
-    @Column(name = "COMMENTARY", length = 125)
     private String commentary;
 
-    @Size(max = 125)
-    @Column(name = "SECURITY", length = 125)
     private String security;
 
-    @Size(max = 10)
-    @Column(name = "STATUS", length = 10)
     private String status;
 
-    @Size(max = 125)
-    @Column(name = "TRADER", length = 125)
     private String trader;
 
-    @Size(max = 125)
-    @Column(name = "BOOK", length = 125)
     private String book;
 
-    @Size(max = 125)
-    @Column(name = "CREATIONNAME", length = 125)
-    private String creationname;
+    private String creationName;
 
-    @Column(name = "CREATIONDATE")
-    private Instant creationdate;
+    private Instant creationDate;
 
-    @Size(max = 125)
-    @Column(name = "REVISIONNAME", length = 125)
-    private String revisionname;
+    private String revisionName;
 
-    @Column(name = "REVISIONDATE")
-    private Instant revisiondate;
+    private Instant revisionDate;
 
-    @Size(max = 125)
-    @Column(name = "DEALNAME", length = 125)
-    private String dealname;
+    private String dealName;
 
-    @Size(max = 125)
-    @Column(name = "DEALTYPE", length = 125)
-    private String dealtype;
+    private String dealType;
 
-    @Size(max = 125)
-    @Column(name = "SOURCELISTID", length = 125)
-    private String sourcelistid;
+    private String sourceListId;
 
-    @Size(max = 125)
-    @Column(name = "SIDE", length = 125)
     private String side;
 
     public BidList(String account, String type, double bidQuantity) {;

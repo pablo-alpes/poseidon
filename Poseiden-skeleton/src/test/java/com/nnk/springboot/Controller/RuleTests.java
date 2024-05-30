@@ -35,7 +35,7 @@ public class RuleTests {
 
 	@Test
 	@DisplayName("GET - ADD - Controller status Ok & returns Expected")
-	public void GivenList_WhenGET_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenListWhenGETReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/ruleName/add";
 		//ACT
@@ -47,7 +47,7 @@ public class RuleTests {
 	@Test
 	@WithUserDetails("test")
 	@DisplayName("GET - UPDATE - by Id")
-	public void GivenId_WhenGETUpdatebyId_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenGETUpdatebyIdReplyOKAndReturnsExpectedURL() throws Exception {
 		//TODO -- Add test SQL of the record 203
 		//ARRANGE
 		String url = "/ruleName/update/203"; // "id = NN"
@@ -60,7 +60,7 @@ public class RuleTests {
 
 	@Test
 	@DisplayName("GET - Get List")
-	public void GivenId_WhenGETList_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenGETListReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/ruleName/list";
 		//ACT
@@ -71,7 +71,7 @@ public class RuleTests {
 
 	@Test
 	@DisplayName("DELETE - Delete user by Id")
-	public void GivenId_WhenDELETEbyId_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenDELETEbyIdReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/ruleName/delete/204";
 		int id = 204;
@@ -87,7 +87,7 @@ public class RuleTests {
 	@Test
 	@WithUserDetails("test")
 	@DisplayName("POST - POSTS Id 1 and checks return and record in the DB")
-	public void GivenList_WhenPOST_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenListWhenPOSTReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/ruleName/update/1";
 		RuleName rule = new RuleName("Rule Name", "Description", "Json", "Template", "SQL", "SQL Part");
@@ -115,7 +115,7 @@ public class RuleTests {
 
 	@Test
 	@DisplayName("POST - VALIDATION - Redirects towards the appropriate link once validates")
-	public void GivenUpdate_WhenValidateRequest_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenUpdateWhenValidateRequestReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/ruleName/validate";
 

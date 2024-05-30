@@ -35,7 +35,7 @@ public class BidTests {
 
 	@Test
 	@DisplayName("GET - ADD - Controller status Ok & returns Expected")
-	public void GivenList_WhenGET_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenListWhenGETReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/bidList/add";
 		//ACT
@@ -47,7 +47,7 @@ public class BidTests {
 	@Test
 	@WithUserDetails("test")
 	@DisplayName("GET - UPDATE - by Id")
-	public void GivenId_WhenGETUpdatebyId_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenGETUpdatebyIdReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/bidList/update/203"; // "id = NN"
 		//ACT
@@ -59,7 +59,7 @@ public class BidTests {
 
 	@Test
 	@DisplayName("GET - Get List")
-	public void GivenId_WhenGETList_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenGETListReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/bidList/list";
 		//ACT
@@ -70,7 +70,7 @@ public class BidTests {
 
 	@Test
 	@DisplayName("DELETE - Delete user by Id")
-	public void GivenId_WhenDELETEbyId_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenDELETEbyIdReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/bidList/delete/204";
 		int id = 204;
@@ -86,13 +86,13 @@ public class BidTests {
 	@Test
 	@WithUserDetails("test")
 	@DisplayName("POST - POSTS Id 1 and checks return and record in the DB")
-	public void GivenList_WhenPOST_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenListWhenPOSTReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/bidList/update/1";
 		BidList bidList = new BidList("UserAccount", "Obligation", 1d);
 
 		bidList.setId(1);
-		bidList.setCreationdate(Instant.now());
+		bidList.setCreationDate(Instant.now());
 
 		//ACT
 		MvcResult mvcResult = this.mockMvc
@@ -114,13 +114,13 @@ public class BidTests {
 
 	@Test
 	@DisplayName("POST - VALIDATION - Redirects towards the appropriate link once validates")
-	public void GivenUpdate_WhenValidateRequest_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenUpdateWhenValidateRequestReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/bidList/validate";
 		BidList bidList = new BidList();
 
 		bidList.setId(1);
-		bidList.setCreationdate(Instant.now());
+		bidList.setCreationDate(Instant.now());
 
 		//ACT
 		MvcResult mvcResult = this.mockMvc

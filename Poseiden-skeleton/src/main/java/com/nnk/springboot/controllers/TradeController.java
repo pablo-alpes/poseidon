@@ -50,7 +50,7 @@ public class TradeController {
     public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
         // Gets Trade by Id and to model then show to the form
         Trade trade = tradeRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("invalid trade id:" + id));
-        trade.setId(id);
+        trade.setTradeId(id);
         model.addAttribute("trade", trade);
         return "trade/update";
     }
@@ -61,7 +61,7 @@ public class TradeController {
         // Check required fields, if valid call service to update Trade and return Trade list
         if (!result.hasErrors()) {
             tradeRepository.save(trade);
-            trade.setId(id);
+            trade.setTradeId(id);
             model.addAttribute("trades", trade);
             return "redirect:/trade/list";
         }

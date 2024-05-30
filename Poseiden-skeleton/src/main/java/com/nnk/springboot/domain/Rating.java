@@ -10,35 +10,27 @@ import lombok.Setter;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "RATING")
+@Table(name = "rating")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Rating {
     @Id
-    @Column(name = "ID", columnDefinition = "TINYINT(0, 0) not null")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Size(max = 125)
-    @Column(name = "MOODYSRATING", length = 125)
     private String moodysRating;
 
-    @Size(max = 125)
-    @Column(name = "SANDPRATING", length = 125)
-    private String sandPRating;
+    private String spRating;
 
-    @Size(max = 125)
-    @Column(name = "FITCHRATING", length = 125)
     private String fitchRating;
 
-    @Column(name = "ORDERNUMBER", columnDefinition = "TINYINT(0, 0)")
     private int orderNumber;
 
-    public Rating(String moodysRating, String sandPRating, String fitchRating, int orderNumber) {
+    public Rating(String moodysRating, String spRating, String fitchRating, int orderNumber) {
         this.moodysRating = moodysRating;
-        this.sandPRating = sandPRating;
+        this.spRating = spRating;
         this.fitchRating = fitchRating;
         this.orderNumber = orderNumber;
     }

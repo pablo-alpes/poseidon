@@ -1,24 +1,47 @@
 package com.nnk.springboot.CrudUnitTest;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.nnk.springboot.service.PasswordCheckServiceImpl;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.test.context.junit4.SpringRunner;
+
+
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.TestCase.assertTrue;
 
 /**
- * Created by Khang Nguyen.
- * Email: khang.nguyen@banvien.com
- * Date: 09/03/2019
- * Time: 11:26 AM
+ * Created by Pablo Miranda
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest
+@AutoConfigureMockMvc
 public class PasswordEncodeTest {
-    @Test
-    public void testPassword() {
-        //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        //String pw = encoder.encode("123456");
-        //System.out.println("[ "+ pw + " ]");
+
+    @ParameterizedTest
+    @CsvSource({"123456@A", "A1234567@","aaaaaaa1A@"})
+    @DisplayName("Valid password allowed")
+    public void validatePassword(String input) {
+        //Arrange
+        String pw = input;
+        PasswordCheckServiceImpl pwdCheck = new PasswordCheckServiceImpl();
+
+        //ACT & Assert
+        assertTrue(pwdCheck.passwordCheck(pw));
+
+    }
+
+    @ParameterizedTest
+    @CsvSource({"1234567a", "12345@a", "aaaaaaaA", "aaaaaaa1A"})
+    @DisplayName("Invalid Passwords not allowed")
+    public void InvalidPasswordsNotAllowed(String input) {
+//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        //Arrange
+        String pw = input;
+        PasswordCheckServiceImpl pwdCheck = new PasswordCheckServiceImpl();
+
+        //ACT & Assert
+        assertFalse(pwdCheck.passwordCheck(pw));
+
     }
 }

@@ -35,7 +35,7 @@ public class TradeTest {
 
 	@Test
 	@DisplayName("GET - ADD - Controller status Ok & returns Expected")
-	public void GivenList_WhenGET_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenListWhenGETReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/trade/add";
 		//ACT
@@ -47,7 +47,7 @@ public class TradeTest {
 	@Test
 	@WithUserDetails("test")
 	@DisplayName("GET - UPDATE - by Id")
-	public void GivenId_WhenGETUpdatebyId_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenGETUpdatebyIdReplyOKAndReturnsExpectedURL() throws Exception {
 		//TODO -- Add test SQL of the record 203
 		//ARRANGE
 		String url = "/trade/update/203"; // "id = NN"
@@ -60,7 +60,7 @@ public class TradeTest {
 
 	@Test
 	@DisplayName("GET - Get List")
-	public void GivenId_WhenGETList_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenGETListReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/trade/list";
 		//ACT
@@ -71,7 +71,7 @@ public class TradeTest {
 
 	@Test
 	@DisplayName("DELETE - Delete user by Id")
-	public void GivenId_WhenDELETEbyId_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenDELETEbyIdReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/trade/delete/204";
 		int id = 204;
@@ -87,11 +87,11 @@ public class TradeTest {
 	@Test
 	@WithUserDetails("test")
 	@DisplayName("POST - POSTS Id 1 and checks return and record in the DB")
-	public void GivenList_WhenPOST_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenListWhenPOSTReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/trade/update/1";
 		Trade trade = new Trade("Trade Account", "Type");
-		trade.setId(1);
+		trade.setTradeId(1);
 		trade.setBuyQuantity(1d);
 
 		//ACT
@@ -109,17 +109,17 @@ public class TradeTest {
 
 		//assert
 		assertEquals(Objects.requireNonNull(mvcResult.getModelAndView()).getViewName(), "redirect:/trade/list");
-		assertNotNull(tradeRepository.findById(trade.getId()));
+		assertNotNull(tradeRepository.findById(trade.getTradeId()));
 	}
 
 	@Test
 	@DisplayName("POST - VALIDATION - Redirects towards the appropriate link once validates")
-	public void GivenUpdate_WhenValidateRequest_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenUpdateWhenValidateRequestReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/trade/validate";
 
 		Trade trade = new Trade("Trade Account", "Type");
-		trade.setId(1);
+		trade.setTradeId(1);
 		trade.setBuyQuantity(1d);
 
 		//ACT

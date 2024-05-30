@@ -35,7 +35,7 @@ public class RatingTests {
 
 	@Test
 	@DisplayName("GET - ADD - Controller status Ok & returns Expected")
-	public void GivenList_WhenGET_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenListWhenGETReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/rating/add";
 		//ACT
@@ -47,7 +47,7 @@ public class RatingTests {
 	@Test
 	@WithUserDetails("test")
 	@DisplayName("GET - UPDATE - by Id")
-	public void GivenId_WhenGETUpdatebyId_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenGETUpdatebyIdReplyOKAndReturnsExpectedURL() throws Exception {
 		//TODO -- Add test SQL of the record 203
 		//ARRANGE
 		String url = "/rating/update/203"; // "id = NN"
@@ -60,7 +60,7 @@ public class RatingTests {
 
 	@Test
 	@DisplayName("GET - Get List")
-	public void GivenId_WhenGETList_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenGETListReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/rating/list";
 		//ACT
@@ -71,7 +71,7 @@ public class RatingTests {
 
 	@Test
 	@DisplayName("DELETE - Delete user by Id")
-	public void GivenId_WhenDELETEbyId_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenDELETEbyIdReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/rating/delete/204";
 		int id = 204;
@@ -87,7 +87,7 @@ public class RatingTests {
 	@Test
 	@WithUserDetails("test")
 	@DisplayName("POST - POSTS Id 1 and checks return and record in the DB")
-	public void GivenList_WhenPOST_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenListWhenPOSTReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/rating/update/1";
 		Rating rating = new Rating("Moodys Rating", "S&PRating", "Fitch Rating", 10);
@@ -114,7 +114,7 @@ public class RatingTests {
 
 	@Test
 	@DisplayName("POST - VALIDATION - Redirects towards the appropriate link once validates")
-	public void GivenUpdate_WhenValidateRequest_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenUpdateWhenValidateRequestReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/rating/validate";
 

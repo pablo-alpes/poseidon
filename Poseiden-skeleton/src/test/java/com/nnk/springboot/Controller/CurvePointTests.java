@@ -33,7 +33,7 @@ public class CurvePointTests {
 
 	@Test
 	@DisplayName("GET - ADD - Controller status Ok & returns Expected")
-	public void GivenList_WhenGET_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenListWhenGETReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/curvePoint/add";
 		//ACT
@@ -44,7 +44,7 @@ public class CurvePointTests {
 
 	@Test
 	@DisplayName("GET - UPDATE - by Id")
-	public void GivenId_WhenGETUpdatebyId_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenGETUpdatebyIdReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/curvePoint/update/203"; // "id = NN"
 		//ACT
@@ -56,7 +56,7 @@ public class CurvePointTests {
 
 	@Test
 	@DisplayName("GET - Get List")
-	public void GivenId_WhenGETList_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenGETListReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/curvePoint/list";
 		//ACT
@@ -67,7 +67,7 @@ public class CurvePointTests {
 
 	@Test
 	@DisplayName("DELETE - Delete user by Id")
-	public void GivenId_WhenDELETEbyId_ReplyOKAndReturnsExpectedURL() throws Exception {
+	public void givenIdWhenDELETEbyIdReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/curvePoint/delete/204";
 		int id = 204;
@@ -82,17 +82,17 @@ public class CurvePointTests {
 	// by default 'user'
 	@Test
 	@DisplayName("POST - POSTS Id 1 and checks return and record in the DB")
-	public void GivenList_WhenPOST_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenListWhenPOSTReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/curvePoint/update/1";
 		CurvePoint curvePoint = new CurvePoint();
 
 		curvePoint.setId(1);
 		curvePoint.setCurveId(3);
-		curvePoint.setAsofdate(Instant.now());
+		curvePoint.setAsOfDate(Instant.now());
 		curvePoint.setTerm(1.0d);
 		curvePoint.setValueNumber(2.0d);
-		curvePoint.setCreationdate(Instant.now());
+		curvePoint.setCreationDate(Instant.now());
 
 		//ACT
 		MvcResult mvcResult = this.mockMvc
@@ -113,17 +113,17 @@ public class CurvePointTests {
 
 	@Test
 	@DisplayName("POST - VALIDATION - Redirects towards the appropriate link")
-	public void GivenUpdate_WhenValidateRequest_ReplyOK_AndReturnsExpectedURL() throws Exception {
+	public void givenUpdateWhenValidateRequestReplyOKAndReturnsExpectedURL() throws Exception {
 		//ARRANGE
 		String url = "/curvePoint/validate";
 		CurvePoint curvePoint = new CurvePoint();
 
 		curvePoint.setId(1);
 		curvePoint.setCurveId(3);
-		curvePoint.setAsofdate(Instant.now());
+		curvePoint.setAsOfDate(Instant.now());
 		curvePoint.setTerm(1.0d);
 		curvePoint.setValueNumber(2.0d);
-		curvePoint.setCreationdate(Instant.now());
+		curvePoint.setCreationDate(Instant.now());
 
 		//ACT
 		MvcResult mvcResult = this.mockMvc

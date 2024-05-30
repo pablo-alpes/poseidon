@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
 <meta charset="utf-8"/>
 <title>Home</title>
@@ -14,6 +14,7 @@
 		</div>
 		<div class="col-6 text-right">
 			<a href="/">Home</a>&nbsp;|&nbsp;<a href="/login">Login</a>
+			<div sec:authorize="isAuthenticated()">Authenticated as <span sec:authentication="name"></span></div>
 		</div>
 	</div>
 	<div class="row"><h2>User List</h2></div>
@@ -32,7 +33,7 @@
 			<tbody>
 				<tr th:each="user : ${users}">
 					<td style="width: 10%" th:text="${user.id}"></td>
-					<td th:text="${user.fullname}"></td>
+					<td th:text="${user.fullName}"></td>
 					<td th:text="${user.username}"></td>
 					<td style="width: 25%" th:text="${user.role}"></td>
 					<td style="width: 15%" class="text-center">
