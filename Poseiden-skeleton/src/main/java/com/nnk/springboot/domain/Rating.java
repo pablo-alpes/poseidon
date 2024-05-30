@@ -20,12 +20,16 @@ public class Rating {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @NotBlank(message = "Field is mandatory")
     private String moodysRating;
 
+    @NotBlank(message = "Field is mandatory")
     private String spRating;
 
+    @NotBlank(message = "Field is mandatory")
     private String fitchRating;
 
+    @NotNull(message = "Field is mandatory")
     private int orderNumber;
 
     public Rating(String moodysRating, String spRating, String fitchRating, int orderNumber) {

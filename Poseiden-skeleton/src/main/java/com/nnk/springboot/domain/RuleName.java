@@ -20,16 +20,22 @@ public class RuleName {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    @NotBlank(message = "Field is mandatory")
     private String name;
 
+    @NotBlank(message = "Field is mandatory")
     private String description;
 
+    @NotBlank(message = "Field is mandatory")
     private String json;
 
+    @NotBlank(message = "Field is mandatory")
     private String template;
 
+    @NotBlank(message = "Field is mandatory")
     private String sqlstr;
 
+    @NotBlank(message = "Field is mandatory")
     private String sqlpart;
 
     public RuleName(String name, String description, String json, String template, String sqlstr, String sqlpart) {

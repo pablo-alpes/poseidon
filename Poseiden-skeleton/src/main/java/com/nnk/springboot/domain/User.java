@@ -20,23 +20,23 @@ public class User {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     @Column(name="username")
-    @NotBlank(message = "Username is mandatory")
+    @NotBlank(message = "Field is mandatory")
     private String username;
 
-    @NotBlank(message = "Password is mandatory")
+    @NotBlank(message = "Field is mandatory")
     @Column(name="password")
     private String password;
 
-    @NotBlank(message = "FullName is mandatory")
+    @NotBlank(message = "Field is mandatory")
     @Column(name="full_name")
     private String fullName;
 
-    @NotBlank(message = "Role is mandatory")
+    @NotBlank(message = "Field is mandatory")
     @Column(name="role")
     private String role;
 
     public User(String username, String password, String fullName, String role) {
-        this.username = username;
+        this    .username = username;
         this.password = password;
         this.fullName = fullName;
         this.role = role;

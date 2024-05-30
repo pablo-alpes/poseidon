@@ -2,6 +2,8 @@ package com.nnk.springboot.domain;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,8 +28,10 @@ public class CurvePoint {
 
     private Instant asOfDate;
 
+    @NotNull(message = "Field is mandatory")
     private Double term;
 
+    @NotNull(message = "Field is mandatory")
     private Double valueNumber;
 
     private Instant creationDate;
