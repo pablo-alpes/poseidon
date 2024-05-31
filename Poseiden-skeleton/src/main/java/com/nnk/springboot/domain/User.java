@@ -1,60 +1,45 @@
 package com.nnk.springboot.domain;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
+import jakarta.validation.constraints.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 @Entity
 @Table(name = "users")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    @NotBlank(message = "Username is mandatory")
+    @Column(name="username")
+    @NotBlank(message = "Field is mandatory")
     private String username;
-    @NotBlank(message = "Password is mandatory")
+
+    @NotBlank(message = "Field is mandatory")
+    @Column(name="password")
     private String password;
-    @NotBlank(message = "FullName is mandatory")
-    private String fullname;
-    @NotBlank(message = "Role is mandatory")
+
+    @NotBlank(message = "Field is mandatory")
+    @Column(name="full_name")
+    private String fullName;
+
+    @NotBlank(message = "Field is mandatory")
+    @Column(name="role")
     private String role;
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
+    public User(String username, String password, String fullName, String role) {
+        this    .username = username;
         this.password = password;
-    }
-
-    public String getFullname() {
-        return fullname;
-    }
-
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
+        this.fullName = fullName;
         this.role = role;
     }
+
 }

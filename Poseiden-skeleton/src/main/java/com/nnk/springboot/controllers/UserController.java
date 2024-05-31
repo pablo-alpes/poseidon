@@ -2,7 +2,9 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
+import com.nnk.springboot.service.PasswordCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,12 +14,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.validation.Valid;
+import jakarta.validation.Valid;
 
 @Controller
 public class UserController {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordCheckService passwordCheckService;
 
     @RequestMapping("/user/list")
     public String home(Model model)
@@ -33,7 +38,7 @@ public class UserController {
 
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
-        if (!result.hasErrors()) {
+        if (!result.hasErrors() && (passwordCheckService.passwordCheck(user.getPassword()))) { //adds check to password requirements, false if not completed
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(user.getPassword()));
             userRepository.save(user);
@@ -58,8 +63,10 @@ public class UserController {
             return "user/update";
         }
 
+        //on stocke le mot de passe comme bcrypt
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         user.setPassword(encoder.encode(user.getPassword()));
+
         user.setId(id);
         userRepository.save(user);
         model.addAttribute("users", userRepository.findAll());
