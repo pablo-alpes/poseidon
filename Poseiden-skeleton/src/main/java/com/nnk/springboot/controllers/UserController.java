@@ -2,9 +2,11 @@ package com.nnk.springboot.controllers;
 
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
+import com.nnk.springboot.service.ClientUserDetailsService;
 import com.nnk.springboot.service.PasswordCheckService;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,9 @@ public class UserController {
     @Autowired
     private PasswordCheckService passwordCheckService;
 
+    @Autowired
+    private ClientUserDetailsService clientUserDetailsService;
+
     @RequestMapping("/user/list")
     public String home(Model model)
     {
@@ -38,11 +43,13 @@ public class UserController {
 
     @PostMapping("/user/validate")
     public String validate(@Valid User user, BindingResult result, Model model) {
-        if (!result.hasErrors() && (passwordCheckService.passwordCheck(user.getPassword()))) { //adds check to password requirements, false if not completed
+        if (!result.hasErrors() && (passwordCheckService.passwordCheck(user.getPassword())) && (clientUserDetailsService.userExists(user.getUsername()))) {
+
+            //adds check to password requirements, false if not completed
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             user.setPassword(encoder.encode(user.getPassword()));
             userRepository.save(user);
-            model.addAttribute("users", userRepository.findAll());
+            model.addAttribute("user", userRepository.findAll());
             return "redirect:/user/list";
         }
         return "user/add";

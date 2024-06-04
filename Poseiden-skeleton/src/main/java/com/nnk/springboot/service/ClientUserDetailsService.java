@@ -1,6 +1,7 @@
 package com.nnk.springboot.service;
 
 import com.nnk.springboot.repositories.UserRepository;
+import jakarta.validation.constraints.Null;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -48,4 +49,15 @@ public class ClientUserDetailsService implements UserDetailsService {
         authorities.add(new SimpleGrantedAuthority("ROLE_" + role));
         return authorities;
     }
+
+    public boolean userExists(String username) {
+        try {
+            com.nnk.springboot.domain.User user = userRepository.findByUsername(username);
+            if (user == null) return false;
+            else return true;
+        }catch (NullPointerException e) {
+            return false;
+        }
+    }
+
 }

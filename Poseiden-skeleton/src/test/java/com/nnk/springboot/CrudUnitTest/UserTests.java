@@ -3,6 +3,7 @@ package com.nnk.springboot.CrudUnitTest;
 import com.nnk.springboot.domain.Trade;
 import com.nnk.springboot.domain.User;
 import com.nnk.springboot.repositories.UserRepository;
+import com.nnk.springboot.service.ClientUserDetailsService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
@@ -22,6 +23,9 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserTests {
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private ClientUserDetailsService clientUserDetailsService = new ClientUserDetailsService();
 
     //Crud Operations tests
     @Test
@@ -46,5 +50,16 @@ public class UserTests {
         userRepository.deleteById(userId);
         assertFalse(userRepository.findById(userId).isPresent());
     }
+
+    @Test
+    @DisplayName("Avoid duplicated usernames once registered")
+    public void givenInputUserNameThenCheckIfNotDuplicatedThenSaveIntoDB() {
+        //create
+        assertFalse(clientUserDetailsService.userExists("mickeymouse")); // not exists, can be added
+        assertTrue(clientUserDetailsService.userExists("admin")); //already existgs
+
+    }
+
+
 
 }
